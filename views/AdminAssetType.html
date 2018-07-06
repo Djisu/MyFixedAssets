@@ -1,0 +1,43 @@
+<style>
+    #assettypeable { width: auto; }
+    #assettypeable td { max-width: 1500px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+    #assettypeable td input { max-width: 1200px; }
+</style>
+
+<div ng-controller="assettypeCtrl">
+    <table id="assettypeTable" class="table table-striped table-bordered">
+        <tr>
+            <th>assettype</th><th>Description</th><th></th>
+        </tr>
+        <tr ng-repeat="item in assettype" ng-hide="item.id == editedassettype.id">
+            <td>{{item.assettype}}</td>
+            <td>{{item.description}}</td>           
+            <td>                  
+                <button ng-click="startEdit(item)" class="btn btn-xs btn-primary">Edit</button>
+				<button ng-click="deleteassettype(item)" class="btn btn-xs btn-primary">Delete</button>
+            </td>
+        </tr>
+        <tr ng-class="{danger: editedassettype}">
+            <td><input ng-model="editedassettype.assettype" required /></td>
+            <td><input ng-model="editedassettype.description" required /></td>				
+            <td>
+                <button ng-hide="editedassettype.id" 
+                        ng-click="createassettype(editedassettype)" 
+                        class="btn btn-xs btn-primary">
+                    Create
+                </button>
+                <button ng-show="editedassettype.id" 
+                        ng-click="updateassettype(editedassettype)"
+						         
+                        class="btn btn-xs btn-primary">
+                    Save
+                </button>
+                <button ng-show="editedassettype" 
+                        ng-click="cancelEdit()" 
+						class="btn btn-xs btn-primary">
+                    Cancel
+                </button>
+            </td>
+        </tr>
+    </table>    
+</div>

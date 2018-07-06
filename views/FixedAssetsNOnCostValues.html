@@ -1,0 +1,79 @@
+<style>
+	.ng-invalid { background-color: lightpink; }
+	.ng-valid { background-color: lightgreen; }
+	span.error { color: red; font-weight: bold; }
+</style>
+
+<h2>Fixed Assets Data Entry</h>
+
+<form name="fixedassetForm" novalidate   ng-submit="createFixedassets(data.fixedassetsDetails)">
+	<div class="well" ng-controller="fixedAssetsCtrl">
+	   <div class="form-group">
+			<label>Purchase Date</label>
+			<input name="purchasedate" class="form control" ng-model="data.fixedassetsDetails.purchaseDate" />	
+
+			<span class="error" ng-show="fixedassetForm.purchaseDate.$error.required">
+				Please enter a purchase date
+			</span>				
+	   </div>
+	   <div class="form-group">
+			<label>Serial Number</label>
+			<input name="serialno" class="form control" ng-model="data.fixedassetsDetails.serialNo" />
+
+			<span class="error" ng-show="fixedassetForm.serialNo.$error.required">
+				Please enter a serial no
+			</span>				
+	   </div>
+	   
+	   <div class="form-group">
+			<label>Company</label>
+			<input name="company" class="form control" ng-model="data.fixedassetsDetails.company" />	
+
+			<span class="error" ng-show="fixedassetForm.company.$error.required">
+				Please enter a company
+			</span>				
+	   </div>
+	   <div class="form-group">
+			<label>Department</label>
+			<input name="department" class="form control" ng-model="data.fixedassetsDetails.department" />	
+
+			<span class="error" ng-show="fixedassetForm.department.$error.required">
+				Please enter a department
+			</span>				
+	   </div>  
+	   <div class="form-group">
+		
+			<label>Select asset type</label>
+			<select id="selectAssetType" class="form-control" ng-model="data.fixedassetsDetails.assetType">
+				<option>Building</option>
+				<option>Furniture</option>
+				<option>Vehicle</option>
+				<option>Land</option>
+				<option>Electronic Device</option>
+			</select>						
+			
+			<span class="error" ng-show="fixedassetForm.assetType.$error.required">
+				Please enter an asset type
+			</span>		
+	   </div>
+	   <div class="form-group">
+			<label>Asset Insurance?</label>
+			<input name="insurflag" class="form control" ng-model="data.fixedassetsDetails.insurflag" />	
+
+			<span class="error" ng-show="fixedassetForm.insurflag.$error.required">
+				Please enter an insurance flag
+			</span>				
+	   </div>  
+	   <div class="form-group">
+			<label>Picture Path</label>
+			<input class="form control" ng-model="data.fixedassetsDetails.pictureplace" />		     
+	   </div>     
+	   <div class="text-center"  ng-controller="fixedassetsAdminCtrl">
+			<button ng-disabled="fixedasset.$invalid"
+					ng-click="createFixedassets(data.fixedassetsDetails)"
+					class="btn btn-primary">
+				Post Fixed Asset
+			</button>
+	   </div>
+	</div>   
+</form>

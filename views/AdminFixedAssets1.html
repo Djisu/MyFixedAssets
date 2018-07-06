@@ -1,0 +1,63 @@
+<style>
+    #fixedassetTable { width: auto; }
+    #fixedassetTable td { max-width: 1500px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+    #fixedassetTable td input { max-width: 1200px; }
+</style>
+
+<div ng-controller="fixedAssetsCtrl">
+    <table id="fixedassetTable" class="table table-striped table-bordered">
+        <tr>
+            <th>Name</th><th>Type</th><th>Purchase Date</th><th>Depreciation Type</th><th>Asset Cost</th><th>Residual Amount</th><th>Useful Years</th><th>Company</th><th>Location</th><th>Department</th><th>Photo Path</th><th>Serial no</th><th>Operations</th>
+        </tr>
+        <tr ng-repeat="item in fixedassets" ng-hide="item.id == editedFixedassets.id">
+            <td>{{item.assetDesc}}</td>
+            <td>{{item.assetType}}</td>           
+            <td>{{item.purchaseDate}}</td>
+			<td>{{item.depreType}}</td>
+			<td>{{item.assetCost}}</td>
+			
+			<td>{{item.residAmount}}</td>
+			<td>{{item.usefulYears}}</td>				
+			<td>{{item.company}}</td>			
+			<td>{{item.location}}</td>
+			<td>{{item.department}}</td>
+			<td>{{item.pictureplace}}</td>
+			<td>{{item.serialNo}}</td>
+            <td>                  
+                <button ng-click="startEdit(item)" class="btn btn-xs btn-primary">Edit</button>
+				<button ng-click="deleteFixedassets(item)" class="btn btn-xs btn-primary">Delete</button>
+            </td>
+        </tr>
+        <tr ng-class="{danger: editedFixedassets}">
+            <td><input ng-model="editedFixedassets.assetDesc" required /></td>			
+			<td><input ng-model="editedFixedassets.assetType" required /></td>  						
+            <td><input ng-model="editedFixedassets.purchaseDate" required /></td>
+			<td><input ng-model="editedFixedassets.depreType" required /></td>
+			<td><input ng-model="editedFixedassets.assetCost" required /></td>				
+            <td><input ng-model="editedFixedassets.residAmount" required /></td>
+            <td><input ng-model="editedFixedassets.usefulYears" required /></td>            
+			<td><input ng-model="editedFixedassets.company" required /></td>			
+			<td><input ng-model="editedFixedassets.location" ng-maxlength=3 required /></td> 			
+            <td><input ng-model="editedFixedassets.department" ng-maxlength=3 required /></td>
+            <td><input ng-model="editedFixedassets.pictureplace"  /></td>
+			<td><input ng-model= "editedFixedassets.serialNo"/></td> 			
+            <td>
+                <button ng-hide="editedFixedassets.id" 
+                        ng-click="createFixedassets(editedFixedassets)" 
+                        class="btn btn-xs btn-primary">
+                    Create
+                </button>
+                <button ng-show="editedFixedassets.id" 
+                        ng-click="updateFixedassets(editedFixedassets)"						         
+                        class="btn btn-xs btn-primary">
+                    Save
+                </button>
+                <button ng-show="editedFixedassets" 
+                        ng-click="cancelEdit()" 
+						class="btn btn-xs btn-primary">
+                    Cancel
+                </button>
+            </td>
+        </tr>
+    </table>    
+</div>

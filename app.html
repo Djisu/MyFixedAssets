@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="sportsStore">
+<head>
+    <title>Fixed Assets Management</title>
+    <script src="angular.js"></script>
+    <link href="bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap-theme.css" rel="stylesheet" />
+    <script>
+        angular.module("sportsStore", ["customFilters", "ngRoute","ngResource"])
+		.config(function ($routeProvider) {
+			$routeProvider.when("/Main", {
+				templateUrl: "/views/appMain.html"
+			});
+			$routeProvider.when("/disposed", {
+				templateUrl: "/views/DisposedAssets.html"
+			});
+			$routeProvider.when("/accumulatedDepreciation", {
+				templateUrl: "/views/AccumulatedDepreciationRegister.html"
+			});
+			$routeProvider.when("/products", {
+				templateUrl: "/views/productListNew.html"
+			});
+			$routeProvider.otherwise({
+				templateUrl: "/views/appMain.html"
+			});
+		});
+   </script>
+    <script src="controllers/fixedassets.js"></script>
+    <script src="filters/customFilters.js"></script>
+	<script src="controllers/productListControllers.js"></script>
+	<script src="controllers/disposedDepreReportController.js"></script>
+	<script src="ngmodules/angular-route.js"></script>
+	<script src="ngmodules/angular-resource.js"></script>
+</head>
+<body ng-controller="sportsStoreCtrl">
+    <div class="navbar navbar-inverse">
+        <a class="navbar-brand" href="#">FIXED ASSETS MANAGEMENT SYSTEM</a>		
+    </div>
+	
+	<div class="alert alert-danger" ng-show="data.error">
+		Error ({{data.error.status}}). The fixed assets data was not loaded.
+		<a href="/app.html" class="alert-link">Click here to try again</a>
+	</div>
+    <ng-view />
+</body>
+</html>

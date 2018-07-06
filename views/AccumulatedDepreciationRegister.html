@@ -1,0 +1,21 @@
+<style>
+    #fixedassetTable { width: auto; }
+    #fixedassetTable td { max-width: 50500px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+    #fixedassetTable td input { max-width: 1900px; }
+</style>
+<div  class="panel panel-default row" ng-controller="productListCtrl">
+    <table id="fixedassetTable" class="table table-striped table-bordered">
+        <tr>
+            <th>Location</th><th>Department</th><th>Name</th><th>Cost of Asset</th><th>Accumulated Depreciation</th>
+        </tr>
+		
+		
+        <tr ng-repeat="item in data.fixedassets">			
+			<td>{{item.location}}</td>
+			<td>{{item.department}}</td>
+            <td>{{item.assetDesc}}</td>
+			<td>{{item.assetCost | currency}}</td>			
+			<td>{{getAccumDepre(item) | currency}}</td>		      
+        </tr>        
+    </table>    
+</div>

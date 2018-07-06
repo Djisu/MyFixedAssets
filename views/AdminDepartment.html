@@ -1,0 +1,43 @@
+<style>
+    #departmenTable { width: auto; }
+    #departmenTable td { max-width: 1500px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+    #departmenTable td input { max-width: 1200px; }
+</style>
+
+<div ng-controller="departmentCtrl">
+    <table id="departmentTable" class="table table-striped table-bordered">
+        <tr>
+            <th>Department</th><th>Description</th><th></th>
+        </tr>
+        <tr ng-repeat="item in department" ng-hide="item.id == editeddepartment.id">
+            <td>{{item.department}}</td>
+            <td>{{item.description}}</td>           
+            <td>                  
+                <button ng-click="startEdit(item)" class="btn btn-xs btn-primary">Edit</button>
+				<button ng-click="deletedepartment(item)" class="btn btn-xs btn-primary">Delete</button>
+            </td>
+        </tr>
+        <tr ng-class="{danger: editeddepartment}">
+            <td><input ng-model="editeddepartment.department" required /></td>
+            <td><input ng-model="editeddepartment.description" required /></td>				
+            <td>
+                <button ng-hide="editeddepartment.id" 
+                        ng-click="createdepartment(editeddepartment)" 
+                        class="btn btn-xs btn-primary">
+                    Create
+                </button>
+                <button ng-show="editeddepartment.id" 
+                        ng-click="updatedepartment(editeddepartment)"
+						         
+                        class="btn btn-xs btn-primary">
+                    Save
+                </button>
+                <button ng-show="editeddepartment" 
+                        ng-click="cancelEdit()" 
+						class="btn btn-xs btn-primary">
+                    Cancel
+                </button>
+            </td>
+        </tr>
+    </table>    
+</div>

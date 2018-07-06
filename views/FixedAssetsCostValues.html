@@ -1,0 +1,62 @@
+<style>
+	.ng-invalid { background-color: lightpink; }
+	.ng-valid { background-color: lightgreen; }
+	span.error { color: red; font-weight: bold; }
+</style>
+
+<h2>Fixed Assets Data Entry</h>
+
+<form name="fixedassetForm" novalidate   ng-submit="createFixedassets(data.fixedassetsDetails)">
+	<div class="well" ng-controller="fixedAssetsCtrl">
+	   
+	   
+	   <div class="form-group">
+			<label>Depreciation Type</label>
+			<input name="depretype" class="form control" ng-model="data.fixedassetsDetails.depreType" />	
+
+			<span class="error" ng-show="fixedassetForm.depreType.$error.required">
+				Please enter a depreciation type
+			</span>			
+	   </div>
+	   <div class="form-group">
+			<label>Depreciation Rate</label>
+			<input name="deprerate" class="form control" ng-model="data.fixedassetsDetails.depreRate" />	
+
+			<span class="error" ng-show="fixedassetForm.depreRate.$error.required">
+				Please enter a depreciation rate
+			</span>					
+	   </div>
+	   <div class="form-group">
+			<label>Residual Amount</label>
+			<input name="residamount" class="form control" ng-model="data.fixedassetsDetails.residAmount" />
+
+			<span class="error" ng-show="fixedassetForm.residAmount.$error.required">
+				Please enter a residual amount
+			</span>					
+	   </div>
+	   <div class="form-group">
+			<label>Useful Years</label>
+			<input name="usefulyears" class="form control" ng-model="data.fixedassetsDetails.usefulYears" />	
+
+			<span class="error" ng-show="fixedassetForm.usefulYears.$error.required">
+				Please enter a useful years
+			</span>					
+	   </div>
+	   <div class="form-group">
+			<label>Asset Cost</label>
+			<input name="assetcost" class="form control" ng-model="data.fixedassetsDetails.assetCost" />	
+
+			<span class="error" ng-show="fixedassetForm.assetCost.$error.required">
+				Please enter an asset cost
+			</span>			
+	   </div>
+	  
+	   <div class="text-center">\\ ng-controller="fixedassetsCtrl"
+			<button ng-disabled="fixedasset.$invalid"
+					ng-click="createFixedassets(data.fixedassetsDetails)"
+					class="btn btn-primary">
+				Post Fixed Asset
+			</button>
+	   </div>
+	</div>   
+</form>

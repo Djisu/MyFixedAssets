@@ -1,0 +1,10 @@
+if (!angular.isArray(data)){
+			return "No fixed assets found!";
+		}
+		var counter=0;
+		for (var i = 0; i < data.length; i++){
+			if (data[i].assettype==editedFixedassets.assettype){t
+				counter++;
+			}			
+		}			
+		return editedFixedassets.location + "-" + editedFixedassets.department + "-" + editedFixedassets.assettype + "-" + counter++;			
